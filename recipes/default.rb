@@ -21,7 +21,7 @@ package "sudo" do
   action platform?("freebsd") ? :install : :upgrade
 end
 
-template "/etc/sudoers" do
+template "/etc/sudoers.d/chef-sudoers" do
   path "/usr/local/etc/sudoers" if platform?("freebsd")
   source "sudoers.erb"
   mode 0440
