@@ -23,7 +23,7 @@ end
 
 template "/etc/sudoers.d/chef-sudoers" do
   path "/usr/local/etc/sudoers" if platform?("freebsd")
-  source "sudoers.erb"
+  source "sudoers-chef.erb"
   mode 0440
   owner "root"
   group platform?("freebsd") ? "wheel" : "root"
@@ -40,3 +40,12 @@ template "/etc/sudo.conf" do
   owner "root"
   group platform?("freebsd") ? "wheel" : "root"
 end
+
+template "/etc/sudoers.d/sudoers" do
+  path "/usr/local/etc/sudoers" if platform?("freebsd")
+  source "sudoers.erb"
+  mode 0440
+  owner "root"
+  group platform?("freebsd") ? "wheel" : "root"
+end
+
