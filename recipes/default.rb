@@ -41,7 +41,7 @@ template "/etc/sudo.conf" do
   group platform?("freebsd") ? "wheel" : "root"
 end
 
-template "/etc/sudoers.d/sudoers" do
+template "/etc/sudoers" do
   path "/usr/local/etc/sudoers" if platform?("freebsd")
   source "sudoers.erb"
   mode 0440
