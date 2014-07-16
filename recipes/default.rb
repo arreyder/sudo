@@ -33,3 +33,10 @@ template "/etc/sudoers.d/chef-sudoers" do
     :passwordless => node['authorization']['sudo']['passwordless']
   )
 end
+
+template "/etc/sudo.conf" do
+  source "sudo.erb"
+  mode 0644
+  owner "root"
+  group platform?("freebsd") ? "wheel" : "root"
+end
